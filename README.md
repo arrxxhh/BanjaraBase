@@ -7,16 +7,16 @@ Recently, I’ve been working on BanjaraBase, a project inspired by Colt Steele�
 
 ### Key Takeaways & Challenges:
 
-- 🔹 Implementing secure user authentication with session management
-- 🔹 Integrating geolocation services for camp listings
-- 🔹 Managing RESTful routes and middleware efficiently
-- 🔹 Enhancing the UI/UX to create a seamless user experience
+-  Implementing secure user authentication with session management
+-  Integrating geolocation services for camp listings
+-  Managing RESTful routes and middleware efficiently
+-  Enhancing the UI/UX to create a seamless user experience
 
 ### What’s Different?
 
-- 🔹 **India-Specific Listings** – Focused on Indian camping spots, from Himalayan retreats to hidden gems in the Western Ghats.
-- 🔹 **Localized Experience** – Future plans to integrate regional languages and local user reviews.
-- 🔹 **Cultural Adaptation** – Highlighting eco-tourism and offbeat camping experiences that resonate with Indian travelers.
+-  **India-Specific Listings** – Focused on Indian camping spots, from Himalayan retreats to hidden gems in the Western Ghats.
+-  **Localized Experience** – Future plans to integrate regional languages and local user reviews.
+-  **Cultural Adaptation** – Highlighting eco-tourism and offbeat camping experiences that resonate with Indian travelers.
 
 ## Features
 
