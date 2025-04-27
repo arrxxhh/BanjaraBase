@@ -12,7 +12,8 @@ router.post('/register', async(req,res)=>{
         const {email,username,password} = req.body;
         const user = new User({email,username});
         const registeredUser=await User.register(user,password);
-        res.redirect('/campgrounds');
+        console.log("success");
+        res.redirect('/login');
     } catch (error) {
         console.log(error);
         res.redirect('/register');
