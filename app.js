@@ -9,8 +9,9 @@ const passport = require('passport');
 const passportl = require('passport-local');
 const session = require('express-session');
 const User = require('./models/user.js');
-
+const Review = require('./models/review');
 const userRoutes=require('./routes/users');
+const { post } = require('selenium-webdriver/http');
 
 //mongoose connection
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
@@ -51,8 +52,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //Routes
-app.get('/',(req,res)=>{
-    res.redirect('/campgrounds');
+app.get('/', (req, res) => {
+    res.render('home');
 });
 
 app.get('/campgrounds',async (req,res) =>{
@@ -73,7 +74,7 @@ app.post('/campgrounds', async(req,res)=>{
     // if we want to do this res.send(req.body) body is emopty it needs to be parsed to view
 })
 app.get('/campgrounds/:id',async (req,res) =>{
-    const camp=await campground.findById(req.params.id);
+    const camp=await campground.findById(req.params.id).populate('reviews');
     res.render('campgrounds/show', {camp});
 });
 
@@ -92,6 +93,23 @@ app.delete('/campgrounds/:id', async(req,res)=>{
     const {id} =req.params;
     await campground.findByIdAndDelete(id);
     res.redirect('/campgrounds')
+})
+app.post('/campgrounds/:id/reviews', async(req,res)=>{
+    const camp = await campground.findById(req.params.id);
+    const review = new Review(req.body.review);
+    camp.reviews.push(review);
+    await review.save();
+    await camp.save();
+    res.redirect(`/campgrounds/${camp._id}`);
+
+})
+
+
+app.delete('/campgrounds/:id/reviews/:reviewId', async(req,res)=>{
+    const {id,reviewId}=req.params;
+    await campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/campgrounds/${id}`);
 })
 
 // app.get('/makecampground',async(req,res)=>{
