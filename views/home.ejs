@@ -1,11 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>home</h1>
-</body>
-</html>
+<%- layout('layouts/boilerplate') %>
+
+<style>
+    .carousel-item {
+        height: 400px; /* Fixed height for all carousel items */
+    }
+    .carousel-item img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .feature-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+    }
+    .btn-interactive {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-interactive:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .btn-interactive:active {
+        transform: translateY(1px);
+    }
+    .btn-primary.btn-interactive:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+    .btn-outline-secondary.btn-interactive:hover {
+        background-color: #52b788;
+        color: white;
+    }
+</style>
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold">Welcome to BanjaraBase</h1>
+            <p class="lead">Discover and share amazing camping spots across the country. Join our community of outdoor enthusiasts!</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="/campgrounds" class="btn btn-primary btn-lg px-4 me-md-2 btn-interactive">
+                    <i class="bi bi-compass me-2"></i>View Campgrounds
+                </a>
+                <a href="/campgrounds/new" class="btn btn-outline-secondary btn-lg px-4 btn-interactive">
+                    <i class="bi bi-plus-circle me-2"></i>Add Campground
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner rounded shadow-lg">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                             class="d-block w-100" alt="Camping scene 1">
+                    </div>
+        
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1559521783-1d1599583485?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             class="d-block w-100" alt="Camping Scene 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                             class="d-block w-100" alt="Camping scene 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row py-5">
+        <h2 class="text-center mb-4">Why Choose BanjaraBase?</h2>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
+                    <h3 class="card-title h5">Find Perfect Spots</h3>
+                    <p class="card-text">Discover hand-picked camping locations with detailed information and reviews.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-people fs-1 text-primary mb-3"></i>
+                    <h3 class="card-title h5">Join Community</h3>
+                    <p class="card-text">Connect with fellow campers and share your experiences and tips.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-star fs-1 text-primary mb-3"></i>
+                    <h3 class="card-title h5">Trusted Reviews</h3>
+                    <p class="card-text">Read authentic reviews from real campers who've been there.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row py-5">
+        <div class="col-12 text-center">
+            <h2 class="mb-4">Ready to Start Your Adventure?</h2>
+            <p class="lead mb-4">Join thousands of campers who have already discovered their perfect camping spot.</p>
+            <a href="/campgrounds" class="btn btn-primary btn-lg btn-interactive">
+                <i class="bi bi-arrow-right-circle me-2"></i>Explore Campgrounds
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap Icons CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
