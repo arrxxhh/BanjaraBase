@@ -10,9 +10,13 @@ router.post('/', async(req,res)=>{
     await review.save();
     await camp.save();
     res.redirect(`/campgrounds/${camp._id}`);
-
 })
 
+router.put('/:reviewId', async(req,res)=>{
+    const {id, reviewId} = req.params;
+    const review = await Review.findByIdAndUpdate(reviewId, {...req.body.review});
+    res.redirect(`/campgrounds/${id}`);
+})
 
 router.delete('/:reviewId', async(req,res)=>{
     const {id,reviewId}=req.params;

@@ -34,8 +34,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 
-const passport = require('passport');
-const passportl = require('passport-local');
+
 
 
 
@@ -59,7 +58,8 @@ const sessionConfig={
 
 
 
-
+const passport = require('passport');
+const passportl = require('passport-local'); //passport local mongoose
 //PASSPORT
 app.use(session(sessionConfig));
 app.use(passport.initialize());
